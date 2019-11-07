@@ -11,6 +11,7 @@
 // @match        *://*.admans.cn/
 // @grant    GM_addStyle
 // @namespace https://greasyfork.org/users/164689
+// @supportURL   https://github.com/JackieZheng/CsdnCnblogReader/issues
 // ==/UserScript==
 
 GM_addStyle("#ReadBtn{position: absolute;float: right;right: 0px;width: auto;background: #0f962191;z-index: 9999;color: white;text-align: center;margin: 5px;padding: 5px;border-radius: 5px;cursor: pointer;font-size:14px;}");
