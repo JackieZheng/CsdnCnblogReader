@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CSDN,CNBLOG博客阅读模式切换插件 
-// @version      2.80
+// @version      2.81
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
 // @match        *://blog.csdn.net/*/article/details/*
@@ -15,9 +15,9 @@
 // @supportURL   https://github.com/JackieZheng/CsdnCnblogReader/issues
 // ==/UserScript==
 
-GM_addStyle("#ReadBtn{position: absolute;float: right;right: 0px;width: auto;background: #0f962191;z-index: 99;color: white;text-align: center;margin: 5px;padding: 5px;border-radius: 5px;cursor: pointer;font-size:14px  !important; line-height: 100% !important;}");
+GM_addStyle("#ReadBtn{position: absolute;float: right;right: 0px;width: auto;background: #0f962191;z-index: 9999;color: white;text-align: center;margin: 5px;padding: 5px;border-radius: 5px;cursor: pointer;font-size:14px  !important; line-height: 100% !important;}");
 GM_addStyle(".html_body_readmodel{overflow: hidden;}");
-GM_addStyle(".article_content_readmodel{position: fixed !important;top: 0px;left: 0px;width: 100%;z-index: 99;overflow: auto !important;height: 100%;background: white;padding: 20px;border:10px solid #bce4cba8;margin: 0 !important;}");
+GM_addStyle(".article_content_readmodel{position: fixed !important;top: 0px;left: 0px;width: 100%;z-index: 9999;overflow: auto !important;height: 100%;background: white;padding: 20px;border:10px solid #bce4cba8;margin: 0 !important;}");
 GM_addStyle(".postBody{margin-top: 20px;}");
 GM_addStyle(".readBtn_float{position: fixed !important;right: 40px !important;}");
 GM_addStyle(".markdown_views{padding-top: 40px !important;}");
