@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CSDN,CNBLOG博客阅读模式切换插件 
-// @version      2.82
+// @version      2.83
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
 // @match        *://blog.csdn.net/*/article/details/*
@@ -13,6 +13,7 @@
 // @grant    GM_addStyle
 // @namespace https://greasyfork.org/users/164689
 // @supportURL   https://github.com/JackieZheng/CsdnCnblogReader/issues
+// @icon         https://www.google.cn/s2/favicons?domain=csdn.net
 // ==/UserScript==
 
 GM_addStyle("#ReadBtn{position: absolute;float: right;right: 0px;width: auto;background: #0f962191;z-index: 9999;color: white;text-align: center;margin: 5px;padding: 5px;border-radius: 5px;cursor: pointer;font-size:14px  !important; line-height: 100% !important;}");
