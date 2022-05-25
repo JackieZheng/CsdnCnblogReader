@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         CSDN,CNBLOG博客阅读模式切换插件 
-// @version      2.83
+// @name         CSDN,CNBLOG博客阅读模式切换插件
+// @version      2.84
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
 // @match        *://blog.csdn.net/*/article/details/*
@@ -30,89 +30,91 @@ GM_addStyle(".ReproduceBtn_float{position: fixed !important;right: 120px !import
 GM_addStyle(".adsbygoogle,.box-shadow,.hide-preCode-box{display: none !important;}");
 GM_addStyle(".set-code-hide{height: auto !important;overflow-y:visible !important;}");
 (function(){
-        'use strict';
-  
-          var divView = document.createElement("div");
-          divView.setAttribute("id", "ReadBtn");
-          divView.innerHTML ='阅读模式';  
-          var cnblog=document.getElementById('cnblogs_post_body')?true:false;
-          var article=document.getElementsByClassName('article_content')[0]||document.getElementsByClassName('postBody')[0]||document.getElementsByClassName('blogpost-body')[0];
-          if(cnblog){ 
-            divView.style.marginTop="-40px";
-            divView.style.position="relative";
-          }
-          if(article)article.insertBefore(divView,article.childNodes[0]); 
-          //自动展开文章内容
-          var readMoreBtn=document.getElementsByClassName('btn-readmore')[0];
-          if(readMoreBtn){readMoreBtn.click(); }
-          
-          var reproduceBtn=document.getElementById('ReproduceBtn')
-          setTimeout(function(){
-                    reproduceBtn=document.getElementById('ReproduceBtn')
-                    if(reproduceBtn){reproduceBtn.style.right="80px";}
-                      },500);
-          
-          divView.onclick=function()
-          {
-              reproduceBtn=document.getElementById('ReproduceBtn')
-              if(divView.innerHTML=='阅读模式')
-              {
-                  divView.innerHTML ='浏览模式';
-                  addClass(article,"article_content_readmodel");
-                  addClass(document.body,"html_body_readmodel");
-                  addClass(divView,"readBtn_float");
-                  if(reproduceBtn){addClass(reproduceBtn,"ReproduceBtn_float");}
-                  if(cnblog){
-                    article.style.width="calc(100% - 60px)";
-                    article.style.height="calc(100% - 60px)";
-                    divView.style.marginTop="5px";
-                    reproduceBtn.style.marginTop="5px";
-                  }
-                  
-                  
-              }
-              else
-             {             
-                  divView.innerHTML ='阅读模式';              
-                  removeClass(article,"article_content_readmodel");
-                  removeClass(document.body,"html_body_readmodel");
-                  removeClass(divView,"readBtn_float"); 
-                  if(reproduceBtn){removeClass(reproduceBtn,"ReproduceBtn_float");}
-                  if(cnblog){ 
-                    divView.style.marginTop="-40px";
-                    divView.style.position="relative";
-                    reproduceBtn.style.marginTop="-40px";
-                    reproduceBtn.style.position="relative";
-                    article.style.width="";
-                    article.style.height="";
-                  }
-             }
-          }
-          
-       
-          
-            
-        //检测样式
-        function hasClass(ele, cls) {
-          return ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
-        }
-        //添加样式
-        function addClass(ele, cls) {
-            if (!hasClass(ele, cls)) ele.className += " " + cls;
-        }
-        //删除样式
-        function removeClass(ele, cls) {
-            if (hasClass(ele, cls)) {
-                var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
-                ele.className = ele.className.replace(reg, " ");
-            }
-        }  
-        if(location.href=="http://csdn.admans.net/"||location.href=="http://csdn.admans.cn/")
+    'use strict';
+
+    var divView = document.createElement("div");
+    divView.setAttribute("id", "ReadBtn");
+    divView.innerHTML ='阅读模式';
+    var cnblog=document.getElementById('cnblogs_post_body')?true:false;
+    var article=document.getElementsByClassName('article_content')[0]||document.getElementsByClassName('postBody')[0]||document.getElementsByClassName('blogpost-body')[0];
+    if(cnblog){
+        divView.style.marginTop="-40px";
+        divView.style.position="relative";
+    }
+    if(article)article.insertBefore(divView,article.childNodes[0]);
+    //自动展开文章内容
+    var readMoreBtn=document.getElementsByClassName('btn-readmore')[0];
+    if(readMoreBtn){readMoreBtn.click(); }
+
+    var reproduceBtn=document.getElementById('ReproduceBtn')
+    setTimeout(function(){
+        reproduceBtn=document.getElementById('ReproduceBtn')
+        if(reproduceBtn){reproduceBtn.style.right="80px";}
+        let loadingBtn=document.querySelector('.loading-btn');
+        loadingBtn.click();
+    },500);
+
+    divView.onclick=function()
+    {
+        reproduceBtn=document.getElementById('ReproduceBtn')
+        if(divView.innerHTML=='阅读模式')
         {
-          Array.prototype.forEach.call(document.body.querySelectorAll("div"), function(ele) {         
-            if (ele) {
-              ele.parentNode.removeChild(ele);
+            divView.innerHTML ='浏览模式';
+            addClass(article,"article_content_readmodel");
+            addClass(document.body,"html_body_readmodel");
+            addClass(divView,"readBtn_float");
+            if(reproduceBtn){addClass(reproduceBtn,"ReproduceBtn_float");}
+            if(cnblog){
+                article.style.width="calc(100% - 60px)";
+                article.style.height="calc(100% - 60px)";
+                divView.style.marginTop="5px";
+                reproduceBtn.style.marginTop="5px";
             }
-          }); 
+
+
         }
-    })();
+        else
+        {
+            divView.innerHTML ='阅读模式';
+            removeClass(article,"article_content_readmodel");
+            removeClass(document.body,"html_body_readmodel");
+            removeClass(divView,"readBtn_float");
+            if(reproduceBtn){removeClass(reproduceBtn,"ReproduceBtn_float");}
+            if(cnblog){
+                divView.style.marginTop="-40px";
+                divView.style.position="relative";
+                reproduceBtn.style.marginTop="-40px";
+                reproduceBtn.style.position="relative";
+                article.style.width="";
+                article.style.height="";
+            }
+        }
+    }
+
+
+
+
+    //检测样式
+    function hasClass(ele, cls) {
+        return ele.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
+    }
+    //添加样式
+    function addClass(ele, cls) {
+        if (!hasClass(ele, cls)) ele.className += " " + cls;
+    }
+    //删除样式
+    function removeClass(ele, cls) {
+        if (hasClass(ele, cls)) {
+            var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
+            ele.className = ele.className.replace(reg, " ");
+        }
+    }
+    if(location.href=="http://csdn.admans.net/"||location.href=="http://csdn.admans.cn/")
+    {
+        Array.prototype.forEach.call(document.body.querySelectorAll("div"), function(ele) {
+            if (ele) {
+                ele.parentNode.removeChild(ele);
+            }
+        });
+    }
+})();
