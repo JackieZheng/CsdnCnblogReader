@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CSDN,CNBLOG博客阅读模式切换插件
-// @version      2.85
+// @version      2.86
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
 // @match        *://blog.csdn.net/*/article/details/*
@@ -29,13 +29,16 @@ GM_addStyle("#ReproduceBtn{right: 80px;font-size:14px;}");
 GM_addStyle(".ReproduceBtn_float{position: fixed !important;right: 120px !important;}");
 GM_addStyle(".adsbygoogle,.box-shadow,.hide-preCode-box{display: none !important;}");
 GM_addStyle(".set-code-hide{height: auto !important;overflow-y:visible !important;}");
-(function(){
-    'use strict';
+GM_addStyle("em[class='attention-content-title']{flex:none !important;}");
 
+
+(function(){   
+    'use strict';
     var divView = document.createElement("div");
     divView.setAttribute("id", "ReadBtn");
     divView.innerHTML ='阅读模式';
-    var cnblog=document.getElementById('cnblogs_post_body')?true:false;
+    //var cnblog=document.getElementById('cnblogs_post_body')?true:false;
+    var cnblog = location.href.indexOf("cnblogs.com") > -1 ? true: false;
     var article=document.getElementsByClassName('article_content')[0]||document.getElementsByClassName('postBody')[0]||document.getElementsByClassName('blogpost-body')[0];
     if(cnblog){
         divView.style.marginTop="-40px";
@@ -118,4 +121,3 @@ GM_addStyle(".set-code-hide{height: auto !important;overflow-y:visible !importan
         });
     }
 })();
-
