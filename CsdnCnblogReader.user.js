@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name         CSDN,CNBLOG博客阅读模式切换插件
-// @version      2.87
+// @version      3.02
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
+// @match        *://*.csdn.net/#/*
 // @match        *://blog.csdn.net/*/article/details/*
 // @match        *://www.cnblogs.com/*/p/*.html
 // @match        *://www.cnblogs.com/*/articles/*.html
 // @match        *://www.cnblogs.com/*/archive/*/*/*/*.html
+// @match        *://www.cnblogs.com/*/p/*
 // @match        *://*.admans.net/
 // @match        *://*.admans.cn/
 // @match        *://*.csdn.net/*
@@ -31,7 +33,8 @@ GM_addStyle(".adsbygoogle,.box-shadow,.hide-preCode-box{display: none !important
 GM_addStyle(".set-code-hide{height: auto !important;overflow-y:visible !important;}");
 GM_addStyle("em[class='attention-content-title']{flex:none !important;}");
 
-GM_addStyle("code{background-color:#f3f3f4;color:#ff9900;}");
+// 屏蔽 推荐下载资源
+GM_addStyle("div[class*='-recommend-box'],.type_download,.common-nps-box{display:none !important}");
 
 
 (function(){   
@@ -121,5 +124,35 @@ GM_addStyle("code{background-color:#f3f3f4;color:#ff9900;}");
                 ele.parentNode.removeChild(ele);
             }
         });
+    }
+
+    /* 消息全部已读功能 */
+    let subMenu=document.querySelector('.toolbar-subMenu')
+    let redMsg=document.querySelector('#redMsgBtn')
+    if(subMenu&&!redMsg){
+        redMsg = document.createElement("a")
+        redMsg.setAttribute("id", "redMsgBtn")
+        redMsg.innerHTML ='全部已读'
+        subMenu.appendChild(redMsg)
+        var redFrame = document.createElement("iframe")
+        redFrame.setAttribute("src", "https://i.csdn.net/#/msg/attention")
+        redFrame.setAttribute("id", "redFrame")
+        redFrame.setAttribute("style", "display:none;")
+        subMenu.appendChild(redFrame)
+        var redFrame1 = document.createElement("iframe")
+        redFrame1.setAttribute("src", "https://i.csdn.net/#/msg/like")
+        redFrame1.setAttribute("id", "redFrame1")
+        redFrame1.setAttribute("style", "display:none;")
+        subMenu.appendChild(redFrame1)
+    }
+    if(redMsg){
+        redMsg.onclick=()=>{
+            // redFrame.setAttribute("src", "https://i.csdn.net/#/msg/attention")
+            redFrame.contentWindow.location.reload(true)
+            // redFrame1.setAttribute("src", "https://i.csdn.net/#/msg/like")
+            redFrame1.contentWindow.location.reload(true)
+            // alert('操作完成')
+            window.location.reload()
+        }
     }
 })();
