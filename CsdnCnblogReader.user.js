@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CSDN,CNBLOG博客阅读模式切换插件
-// @version      3.02
+// @version      3.03
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
 // @match        *://*.csdn.net/#/*
@@ -36,8 +36,15 @@ GM_addStyle("em[class='attention-content-title']{flex:none !important;}");
 // 屏蔽 推荐下载资源
 GM_addStyle("div[class*='-recommend-box'],.type_download,.common-nps-box{display:none !important}");
 
+// 滚动条样式
+GM_addStyle("::-webkit-scrollbar {width: 14px; height: 14px; }");
+GM_addStyle("::-webkit-scrollbar-track,::-webkit-scrollbar-thumb {border-radius: 999px;border: 5px solid transparent;}");
+GM_addStyle("::-webkit-scrollbar-track {box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset; }");
+GM_addStyle("::-webkit-scrollbar-thumb {min-height: 20px;background-clip: content-box;box-shadow: 0 0 0 5px rgba(0,0,0,.2) inset; }");
+GM_addStyle("::-webkit-scrollbar-corner { background: transparent;}");
 
-(function(){   
+
+(function(){
     'use strict';
     var divView = document.createElement("div");
     divView.setAttribute("id", "ReadBtn");
