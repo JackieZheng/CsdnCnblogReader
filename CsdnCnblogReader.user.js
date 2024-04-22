@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         CSDN,CNBLOG博客阅读模式切换插件
-// @version      3.03
+// @version      3.13
 // @description  CSDN 阅读模式和浏览模式切换，完美支持傲游、360、Chrome等浏览器
 // @author       By Jackie http://csdn.admans.cn/
 // @match        *://*.csdn.net/#/*
@@ -12,6 +12,7 @@
 // @match        *://*.admans.net/
 // @match        *://*.admans.cn/
 // @match        *://*.csdn.net/*
+// @match        *://wenku.csdn.net/column/*
 // @grant    GM_addStyle
 // @namespace https://greasyfork.org/users/164689
 // @supportURL   https://github.com/JackieZheng/CsdnCnblogReader/issues
@@ -51,7 +52,7 @@ GM_addStyle("::-webkit-scrollbar-corner { background: transparent;}");
     divView.innerHTML ='阅读模式';
     //var cnblog=document.getElementById('cnblogs_post_body')?true:false;
     var cnblog = location.href.indexOf("cnblogs.com") > -1 ? true: false;
-    var article=document.getElementsByClassName('article_content')[0]||document.getElementsByClassName('postBody')[0]||document.getElementsByClassName('blogpost-body')[0];
+    var article=document.getElementsByClassName('article_content')[0]||document.getElementsByClassName('postBody')[0]||document.getElementsByClassName('blogpost-body')[0]||document.getElementsByClassName('content-view')[0];
     if(cnblog){
         divView.style.marginTop="-40px";
         divView.style.position="relative";
