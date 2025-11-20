@@ -16,6 +16,8 @@
 // @grant    GM_addStyle
 // @namespace https://greasyfork.org/users/164689
 // @supportURL   https://github.com/JackieZheng/CsdnCnblogReader/issues
+// @updateURL         https://github.com/JackieZheng/CsdnCnblogReader/raw/refs/heads/master/CsdnCnblogReader.user.js
+// @downloadURL       https://github.com/JackieZheng/CsdnCnblogReader/raw/refs/heads/master/CsdnCnblogReader.user.js
 // @icon         https://www.google.cn/s2/favicons?domain=csdn.net
 // ==/UserScript==
 
